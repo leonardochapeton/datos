@@ -1,0 +1,59 @@
+
+1. Tener mi base de datos creada con su respectiva Tabla (estudiantes)  con sus datos ...
+Server: localhost
+BD: tallersena588
+Usuario: root
+Clave: 12345678
+
+2. crear nuestro App Consola en NET (skd net 3.1)
+
+3. *** INSTALAR Y CONFIGURAR  *** Ambiente de consola
+ 
+  A. paquete de diseno
+  
+ dotnet add package Microsoft.EntityFrameworkCore.Design --version 2.0.1
+(Cuidado con esta versión que aparece aquí, puede no ser la correcta cuando usted la está instalando, verifique qué versión de .NET tiene usted y qué versión de EntityFrameworkCore.Design va a instalar)
+
+  
+  B. proovedor de datos 
+  
+  dotnet add package Pomelo.EntityFrameworkCore.MySql --version 2.0.1
+(Cuidado con esta versión que aparece aquí, puede no ser la correcta cuando usted la está instalando, verifique qué versión de .NET tiene usted y qué versión de EntityFrameworkCore.Design tiene)
+
+  
+  C. Desde mo herramienta de trabajo (visual studio community  o visual studio code su editor de codigo favorito )
+  
+    editar el archivo (nombreDeLaAplicacion).csporj para hacer referencia a la herramienta del Framework
+	
+	<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
+	
+	 OJO GRABAR GRABAR GRABAR 
+	 
+  D. restarurar la app
+  
+   
+	 dotnet restore
+	OJO VERIFICAR SI ESTA EL Framework INSTALADO
+	
+		dotnet ef
+	
+	"SI VEN UNICORNIOS ALEGRENSE"
+	
+4. CONFUGURAR LA CONEXION la cadena de conexion de mi base de datos por medio del  proveedor de datos
+
+dotnet ef dbcontext scaffold "Server=localhost; userid=root; password=; Database=tallersena588" "Pomelo.EntityFrameworkCore.MySql" -o .\Modelo -f
+
+Con respecto a la anterior línea de código, si usted tiene una contraseña (digamos miniña) y un usuario (digamos elbajito) y mi base de datos se llama taller_largo, la línea queda:
+
+dotnet ef dbcontext scaffold "Server=localhost; userid=elbajito; password=miniña; Database=taller_largo" "Pomelo.EntityFrameworkCore.MySql" -o .\Modelo -f
+
+
+   
+   
+   verificamos si nuesta app tiene creada la carpeta Modelo
+
+ 5. en nuestra appa enlazamos las librerias
+ 
+ using System.Linq;
+ 
+ using <nameSpace>.Modelo;
